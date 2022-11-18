@@ -8,11 +8,32 @@
     */
 
     //ENTRADA
+    let valorInvestido = 0;
+    let rendimento = 0.018;
+    let montante24 = 0;
+    let rendimento24 = 0;
+    let montante48 = 0;
+    let rendimento48 = 0;
+    let montante96 = 0;
+    let rendimento96 = 0;
 
 
     //PROCESSAMENTO
-
+    for (let mes = 1; mes <= 96; mes++){
+        valorInvestido = valorInvestido + 100;
+        valorInvestido = valorInvestido * 1.018;
+        if (mes === 24) {
+            montante24 = valorInvestido;
+            rendimento24 = valorInvestido - 2400;
+        } else if (mes === 48){
+            montante48 = valorInvestido;
+            rendimento48 = valorInvestido - 4800 - rendimento24;
+        } else if (mes === 96){
+            montante96 = valorInvestido;
+            rendimento96 = valorInvestido - 9600 - rendimento24 - rendimento48;
+        }
+    }
     
     //SAÍDA
-    
+    document.write(`O valor para o primeiro período foi: R$${montante24.toFixed(2)} e o rendimento R$${rendimento24.toFixed(2)}. </br> O valor para o segundo período foi: R$${montante48.toFixed(2)} e o rendimento R$${rendimento48.toFixed(2)}. </br> O valor para o terceiro período foi: R$${montante96.toFixed(2)} e o rendimento R$${rendimento96.toFixed(2)}.`)
 </script>
